@@ -1,13 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import HomeScreen from './screens/HomeScreen';
 
 const AppNavigator = () => {
     return (
-        <View>
-            <Text>
-                AppNavigator
-            </Text>
-        </View>
+        <HomeScreen />
     )
 };
 

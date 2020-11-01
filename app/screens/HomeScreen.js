@@ -1,14 +1,23 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { SafeAreaView, Text, View,StyleSheet, Platform } from 'react-native';
+import Constants from 'expo-constants';
 
 const HomeScreen = () => {
     return (
-        <View>
-            <Text>
-                Home Screen
+        <SafeAreaView>
+            <View style={styles.view}>
+                <Text>
+                    Home Screen
             </Text>
-        </View>
+            </View>
+        </SafeAreaView>
     )
 };
+
+const styles = StyleSheet.create({
+    view: {
+        paddingTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight
+    }
+})
 
 export default HomeScreen;
