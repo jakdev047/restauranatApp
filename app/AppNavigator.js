@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import MenuScreen from './screens/MenuScreen';
 import DishDetailScreen from './screens/DishDetailScreen';
+import Icon from './components/Icon';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -16,6 +17,7 @@ const MenuStack = () => {
     return (
         <Stack.Navigator 
             screenOptions={{
+                headerRight: ()=> (<Icon />),
                 headerStyle:{
                     backgroundColor: '#f53b50'
                 },
