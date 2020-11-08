@@ -3,6 +3,8 @@ import { SafeAreaView, Text, View,StyleSheet, Platform, Button } from 'react-nat
 import Constants from 'expo-constants';
 import { connect } from 'react-redux';
 import { getDishes } from '../redux/actions/dishes';
+import { FlatList } from 'react-native-gesture-handler';
+import MenuItem from '../components/MenuItem';
 
 const MenuScreen = props => {
 
@@ -13,10 +15,12 @@ const MenuScreen = props => {
     return (
         <SafeAreaView>
             <View style={styles.view}>
-                <Text>Menu Screen</Text>
-                <Button 
-                    title= 'Dish Detail'
-                    onPress={()=>props.navigation.navigate('Dish Detail')}
+                <FlatList
+                    data={props.dishes}
+                    renderItem={
+                        ({item})=> (<MenuItem item={item} />)
+                    }
+                    keyExtractor={item=>item.id.toString()}
                 />
             </View>
         </SafeAreaView>

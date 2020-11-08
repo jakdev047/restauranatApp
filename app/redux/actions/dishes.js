@@ -9,7 +9,7 @@ export const loadDishes = dishes => {
 };
 
 export const getDishes = () => dispatch => {
-    axios.get('')
-        .then(res=>console.log(res.json()))
+    axios.get("https://restaurantapp-220c9.firebaseio.com/dishes.json")
+        .then(response => dispatch(loadDishes(response.data)) ) 
         .catch(err=> console.log(err))
 };
