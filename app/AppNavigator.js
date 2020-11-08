@@ -14,9 +14,24 @@ const Stack = createStackNavigator();
 
 const MenuStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Menu" component={MenuScreen} />
-            <Stack.Screen name="Dish Detail" component={DishDetailScreen} />
+        <Stack.Navigator 
+            screenOptions={{
+                headerStyle:{
+                    backgroundColor: '#f53b50'
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold'
+                }
+
+            }}
+        >
+            <Stack.Screen name="Menu" component={MenuScreen} /> 
+            <Stack.Screen 
+                name="Dish Detail" 
+                component={DishDetailScreen} 
+                options={({route})=>({title: route.params.dish.name })} 
+            />
         </Stack.Navigator>
     )
 }
