@@ -3,6 +3,8 @@ import React from 'react';
 // navigation
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+
 
 // pages
 import HomeScreen from './screens/HomeScreen';
@@ -14,11 +16,19 @@ const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 const MenuStack = () => {
+    const navigation = useNavigation();
     return (
-        <Stack.Navigator 
+        <Stack.Navigator
             screenOptions={{
-                headerRight: ()=> (<Icon />),
-                headerStyle:{
+                headerRight: () => (
+                    <Icon
+                        name="ios-menu"
+                        size={24}
+                        color='#fff'
+                        iconStyle={{ paddingRight: 15 }}
+                        action={() => navigation.toggleDrawer()}
+                    />),
+                headerStyle: {
                     backgroundColor: '#f53b50'
                 },
                 headerTintColor: '#fff',
@@ -28,11 +38,11 @@ const MenuStack = () => {
 
             }}
         >
-            <Stack.Screen name="Menu" component={MenuScreen} /> 
-            <Stack.Screen 
-                name="Dish Detail" 
-                component={DishDetailScreen} 
-                options={({route})=>({title: route.params.dish.name })} 
+            <Stack.Screen name="Menu" component={MenuScreen} />
+            <Stack.Screen
+                name="Dish Detail"
+                component={DishDetailScreen}
+                options={({ route }) => ({ title: route.params.dish.name })}
             />
         </Stack.Navigator>
     )
