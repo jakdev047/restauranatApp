@@ -11,6 +11,7 @@ import HomeScreen from './screens/HomeScreen';
 import MenuScreen from './screens/MenuScreen';
 import DishDetailScreen from './screens/DishDetailScreen';
 import Icon from './components/Icon';
+import FavouriteScreens from './screens/FavouriteScreens';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -48,11 +49,40 @@ const MenuStack = () => {
     )
 }
 
+const FavStack = () => {
+    const navigation = useNavigation();
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerRight: () => (
+                    <Icon
+                        name="ios-menu"
+                        size={24}
+                        color='#fff'
+                        iconStyle={{ paddingRight: 15 }}
+                        action={() => navigation.toggleDrawer()}
+                    />),
+                headerStyle: {
+                    backgroundColor: '#f53b50'
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold'
+                }
+
+            }}
+        >
+            <Stack.Screen name="Favourites" component={FavouriteScreens} />
+        </Stack.Navigator>
+    )
+}
+
 const AppNavigator = () => {
     return (
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="Menu" component={MenuStack} />
+            <Drawer.Screen name="Favourites" component={FavStack} />
         </Drawer.Navigator>
     )
 };

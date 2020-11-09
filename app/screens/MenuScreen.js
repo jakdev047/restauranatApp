@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-import { SafeAreaView, Text, View,StyleSheet, Platform, FlatList } from 'react-native';
+import { SafeAreaView, View,StyleSheet, Platform, FlatList } from 'react-native';
 import Constants from 'expo-constants';
 import { connect } from 'react-redux';
 import { getDishes } from '../redux/actions/dishes';
