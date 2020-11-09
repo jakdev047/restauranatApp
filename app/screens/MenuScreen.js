@@ -1,9 +1,8 @@
 import React,{useEffect} from 'react';
-import { SafeAreaView, Text, View,StyleSheet, Platform, Button } from 'react-native';
+import { SafeAreaView, Text, View,StyleSheet, Platform, FlatList } from 'react-native';
 import Constants from 'expo-constants';
 import { connect } from 'react-redux';
 import { getDishes } from '../redux/actions/dishes';
-import { FlatList } from 'react-native-gesture-handler';
 import MenuItem from '../components/MenuItem';
 
 const MenuScreen = props => {

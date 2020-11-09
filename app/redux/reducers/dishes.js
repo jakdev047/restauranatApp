@@ -1,7 +1,8 @@
-import { LOAD_DISHES } from "../actions/types";
+import { ADD_TO_FAVOURITIES, LOAD_DISHES } from "../actions/types";
 
 const initialState = {
-    dishes: []
+    dishes: [],
+    favourites:[]
 };
 
 const reducers = (state=initialState,action) => {
@@ -10,6 +11,11 @@ const reducers = (state=initialState,action) => {
             return {
                 ...state,
                 dishes: action.payload
+            }
+        case ADD_TO_FAVOURITIES:
+            return {
+                ...state,
+                favourites: state.favourites.concat(action.payload)
             }
         default:
             return state;
