@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
+import FavItem from '../components/FavItem';
 
 const FavouriteScreens = props => {
     return (
@@ -8,7 +9,7 @@ const FavouriteScreens = props => {
             <FlatList
                 data={props.favourites}
                 renderItem={
-                    ({ item }) => (<Text>{item.name}</Text>)
+                    ({ item }) => (<FavItem item={item} selectedDishes={()=> props.navigation.navigate('Dish Detail',{dish:item})}/>)
                 }
                 keyExtractor={item => item.id.toString()}
             />
