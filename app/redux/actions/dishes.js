@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_TO_FAVOURITIES, LOAD_DISHES } from "./types";
+import { ADD_TO_FAVOURITIES, LOAD_DISHES, REMOVE_FAVOURITIE } from "./types";
 
 export const loadDishes = dishes => {
     return {
@@ -17,6 +17,13 @@ export const getDishes = () => dispatch => {
 export const addToFavourites = dish => {
     return {
         type: ADD_TO_FAVOURITIES,
+        payload: dish
+    }
+};
+
+export const removeFavourites = dish => {
+    return {
+        type: REMOVE_FAVOURITIE,
         payload: dish
     }
 };

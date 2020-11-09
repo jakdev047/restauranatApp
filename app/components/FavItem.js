@@ -1,18 +1,40 @@
 import React from 'react';
-import { Image, Text, View, TouchableHighlight, StyleSheet } from 'react-native';
+import { Image, Text, View, StyleSheet, Pressable, Alert } from 'react-native';
+import { connect } from 'react-redux';
+import { removeFavourites } from '../redux/actions/dishes';
 
-const FavItem = ({item,selectedDishes}) => {
+const FavItem = ({ item }) => {
+    const removeFav = () => {
+        Alert.alert(
+            'Delete Favourite?',
+            'Are your sure you wish to delete the favourite dish' + props.item.name + '?',
+            [
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancelled'),
+                    style: 'cancel'
+                },
+                {
+                    text: 'Ok',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel'
+                },
+                { text: 'OK', onPress: () => props.removeFavourites(item) }
+            ],
+            { cancelable: false }
+        )
+    }
     return (
-        <TouchableHighlight onPress={selectedDishes}>
+        <Pressable onLongPress={() => removeFav()}>
             <View style={styles.container}>
                 {
-                    item.image && <Image source={{uri: item.image}} style={styles.image} />
+                    item.image && <Image source={{ uri: item.image }} style={styles.image} />
                 }
                 <View style={styles.details}>
                     <Text style={styles.name}>{item.name}</Text>
                 </View>
             </View>
-        </TouchableHighlight>
+        </Pressable>
     )
 };
 
@@ -36,8 +58,14 @@ const styles = StyleSheet.create({
     name: {
         fontWeight: '500',
         fontSize: 30
-        
-    },
-})
 
-export default FavItem;
+    },
+});
+
+const mapDispatchToProps = dispatch => {
+    return {
+        removeFavourites: dish => dispatch(removeFavourites(dish))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(FavItem);

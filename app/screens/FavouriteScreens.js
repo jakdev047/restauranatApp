@@ -9,7 +9,7 @@ const FavouriteScreens = props => {
             <FlatList
                 data={props.favourites}
                 renderItem={
-                    ({ item }) => (<FavItem item={item} selectedDishes={()=> props.navigation.navigate('Dish Detail',{dish:item})}/>)
+                    ({ item }) => (<FavItem item={item}/>)
                 }
                 keyExtractor={item => item.id.toString()}
             />
