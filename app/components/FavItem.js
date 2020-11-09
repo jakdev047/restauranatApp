@@ -3,23 +3,18 @@ import { Image, Text, View, StyleSheet, Pressable, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { removeFavourites } from '../redux/actions/dishes';
 
-const FavItem = ({ item }) => {
+const FavItem = ({ item,removeFavourites }) => {
     const removeFav = () => {
         Alert.alert(
             'Delete Favourite?',
-            'Are your sure you wish to delete the favourite dish' + props.item.name + '?',
+            'Are your sure you wish to delete the favourite dish' + item.name + '?',
             [
                 {
                     text: 'Cancel',
                     onPress: () => console.log('Cancelled'),
                     style: 'cancel'
                 },
-                {
-                    text: 'Ok',
-                    onPress: () => console.log('Cancel Pressed'),
-                    style: 'cancel'
-                },
-                { text: 'OK', onPress: () => props.removeFavourites(item) }
+                { text: 'OK', onPress: () => removeFavourites(item) }
             ],
             { cancelable: false }
         )
