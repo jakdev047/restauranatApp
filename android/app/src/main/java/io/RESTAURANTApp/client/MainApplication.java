@@ -7,6 +7,7 @@ import android.net.Uri;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.reactnativecommunity.geolocation.GeolocationPackage;
+import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
