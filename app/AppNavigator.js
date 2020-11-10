@@ -12,6 +12,7 @@ import MenuScreen from './screens/MenuScreen';
 import DishDetailScreen from './screens/DishDetailScreen';
 import Icon from './components/Icon';
 import FavouriteScreens from './screens/FavouriteScreens';
+import GeoLocationScreen from './screens/GeoLocationScreen';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -77,12 +78,41 @@ const FavStack = () => {
     )
 }
 
+const GeoStack = () => {
+    const navigation = useNavigation();
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerRight: () => (
+                    <Icon
+                        name="ios-menu"
+                        size={24}
+                        color='#fff'
+                        iconStyle={{ paddingRight: 15 }}
+                        action={() => navigation.toggleDrawer()}
+                    />),
+                headerStyle: {
+                    backgroundColor: '#eb1'
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold'
+                }
+
+            }}
+        >
+            <Stack.Screen name="Geo Location" component={GeoLocationScreen} />
+        </Stack.Navigator>
+    )
+}
+
 const AppNavigator = () => {
     return (
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="Menu" component={MenuStack} />
             <Drawer.Screen name="Favourites" component={FavStack} />
+            <Drawer.Screen name="Geo Location" component={GeoStack} />
         </Drawer.Navigator>
     )
 };
